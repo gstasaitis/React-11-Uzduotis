@@ -1,0 +1,36 @@
+// <div className="navbar">
+// <Link to='/'>
+//     <DiAtom className="atom"/>
+// </Link>
+// <h1>vetbee</h1>
+// </div>
+div .top {
+    color: $orange;
+    box-shadow: 0 0 2px gray;
+}
+
+div .navbar {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+
+    .atom {
+        color: $orange;
+        font-size: 2em;
+        transition: .8s;
+
+        &:hover{
+            transform: rotate(360deg);
+            color: $orangered;
+        }
+    }
+
+    h1 {
+        font-weight: 400;
+        font-size: 1.6em;
+        color: $orange;
+        padding-bottom: 5px;
+    }
+}
