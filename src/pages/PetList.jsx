@@ -23,52 +23,49 @@ const fetchPetNameData = async () => {
 
 const fetchPetDob = async () => {
     try {
-        const resp = await fetch(`https://vetbee-backend.glitch.me/v1/pets/${id}`);
-
+        const resp = await fetch(`https://vetbee-backend.glitch.me/v1/pets/${id}`)
         if (resp.ok) {
-            const contentType = resp.headers.get("content-type");
-
-            if (contentType && contentType.includes("application/json")) {
-                const json = await resp.json();
-
-                if (json.dob) {
-                    const dobDate = new Date(json.dob);
-                    setDob(dobDate.toLocaleDateString("lt"));
-                } else {
-                    console.error("dob is undefined");
-                    // Handle the case where dob is undefined
-                }
+            const json = await resp.json();
+            if (json.dob) {
+                const dobDate = new Date(json.dob)
+                setDob(dobDate.toLocaleDateString("lt"))
             } else {
-                // Handle plain text error message
-                console.error(await resp.text());
-                setDob("Pet not found"); // Set a default value or handle it as needed
+                console.error("dob is undefined")
+                setDob("Date not available")
             }
-        } else if (resp.status === 404) {
-            console.error("Pet not found");
-            setDob("Pet not found"); // Set a default value or handle it as needed
         } else {
-            console.error("Error fetching pet dob. Status:", resp.status);
-            // Handle other error cases
+            console.error("Error fetching pet dob. Status:", resp.status)
+            setDob("Error fetching pet dob")
         }
     } catch (error) {
         console.error("Error fetching pet dob:", error);
-        // Handle other fetch errors appropriately
+        setDob("Error fetching pet dob")
     }
-};
-
-
-
-
-
-
-  
-  
+}
 
 useEffect(() => {
     fetchPetList()
     fetchPetDob()
     fetchPetNameData()
 }, [])
+
+
+const handleDelete = async (petId) => {
+    try {
+        const resp = await fetch(
+            "https://vetbee-backend.glitch.me/v1/pets/" + petId,
+            {
+                method: "DELETE"
+            }
+        )
+        if (resp.ok) {
+            const newPetList = petList.filter((pet) => pet.id !== petId)
+            setPetlist(newPetList)
+        }
+    } catch (error) {
+        console.error("Error deleting pet:", error)
+    }
+}
 
 // API INFO
 // "id": 391,
@@ -89,13 +86,18 @@ useEffect(() => {
     {!petList ? <Loading /> : petList.map((pets) => (
         <div key={pets.id} className="pet">
             <h3>{pets.name}</h3>
-            {dob && <p>{dob}</p>}
+            <p>{pets.dob ? new Date(pets.dob).toLocaleDateString("lt") : "Date not available"}</p> 
             <p>{pets.client_email}</p>
     <div className="buttons">
     <Link to="/addlog">
         <button className="button">VIEW LOG</button>
     </Link>
-        <button className="delete">DELETE</button>
+    <button
+        className="delete"
+        onClick={() => handleDelete(pets.id)}
+        >
+        DELETE
+    </button>
     </div>
         </div>
     ))}
