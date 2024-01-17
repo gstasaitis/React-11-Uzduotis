@@ -59,4 +59,17 @@
       transform: translateX(0px);
     }
   }
-    
+   
+  .bearload{ 
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bear {
+    width: 160px;
+    text-align: center;
+    margin: auto;
+    background: #622700;
+    color: white;
+    padding-bottom: 10px;
+  }

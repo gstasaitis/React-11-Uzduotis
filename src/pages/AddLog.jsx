@@ -48,8 +48,11 @@ const AddLog = () => {
   <div className="cards">
         {loading ? (
   <Loading />
-) : error ? (
-  <p>Error: {error}</p>
+  ) : error ? (
+    <div className="bearload">
+    <Loading/>
+  <p className="bear"> No Records Found...</p>
+  </div>
 ) : (
   petLogs.map((logEntry) => (
     <div className="card" key={logEntry.id}>

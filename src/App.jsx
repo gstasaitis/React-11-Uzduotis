@@ -11,7 +11,7 @@ function App(logEntry) {
     <>
       <BrowserRouter>
         <NavBar />
-        <div className="main">
+        <div className="main cursor">
           <Routes>
             <Route path='/' element={<PetList />} />
             <Route path='/addpet' element={<AddPet />} />
