@@ -16,7 +16,7 @@ function App(logEntry) {
             <Route path='/' element={<PetList />} />
             <Route path='/addpet' element={<AddPet />} />
             <Route key={logEntry.id} path='/addlog/:logId' element={<AddLog />} />
-            <Route path='/petlogs' element={<PetLogs />} />
+            <Route path='/petlogs/:logId' element={<PetLogs />} />
           </Routes>
         </div>
       </BrowserRouter>

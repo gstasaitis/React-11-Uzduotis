@@ -37,7 +37,7 @@ const AddLog = () => {
   <div className="records">
     <h2>{petName}: Health Records</h2>
     <div className="buttonss">
-      <NavLink to="/petlogs">
+    <NavLink to={`/petlogs/${logId}`}>
         <button className="button">ADD LOG</button>
       </NavLink>
       <NavLink to="/">

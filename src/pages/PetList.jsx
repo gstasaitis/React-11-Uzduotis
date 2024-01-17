@@ -34,7 +34,6 @@ const fetchPetDob = async () => {
                 setDob("Date not available")
             }
         } else {
-            console.error("Error fetching pet dob. Status:", resp.status)
             setDob("Error fetching pet dob")
         }
     } catch (error) {
