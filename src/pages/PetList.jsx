@@ -42,13 +42,11 @@ const fetchPetDob = async () => {
         setDob("Error fetching pet dob")
     }
 }
-
 useEffect(() => {
     fetchPetList()
     fetchPetDob()
     fetchPetNameData()
 }, [])
-
 
 const handleDelete = async (petId) => {
     try {
@@ -66,14 +64,6 @@ const handleDelete = async (petId) => {
         console.error("Error deleting pet:", error)
     }
 }
-
-// API INFO
-// "id": 391,
-// "name": "Bartas",
-// "dob": 1704326400000,
-// "client_email": "bartas@gmail.com",
-// "archived": 0
-
     return (
     <>
     <div className="petlist">
@@ -89,8 +79,8 @@ const handleDelete = async (petId) => {
             <p>{pets.dob ? new Date(pets.dob).toLocaleDateString("lt") : "Date not available"}</p> 
             <p>{pets.client_email}</p>
     <div className="buttons">
-    <Link to="/addlog">
-        <button className="button">VIEW LOG</button>
+    <Link to={`/addlog/${pets.id}`}>
+                <button className="button">VIEW LOG</button>
     </Link>
     <button
         className="delete"
