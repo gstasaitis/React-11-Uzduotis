@@ -1,44 +1,44 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react" 
+import { Link, useNavigate, useParams } from "react-router-dom" 
 
 const PetLogs = () => {
-  const navigate = useNavigate();
-  const [data, setData] = useState({});
-  const { logId } = useParams();
-  const [petName, setPetName] = useState("");
+  const navigate = useNavigate() 
+  const [data, setData] = useState({}) 
+  const { logId } = useParams() 
+  const [petName, setPetName] = useState("") 
 
   useEffect(() => {
     const fetchPetInfo = async () => {
       try {
-        const response = await fetch(`https://vetbee-backend.glitch.me/v1/pets/${logId}`);
+        const response = await fetch(`https://vetbee-backend.glitch.me/v1/pets/${logId}`) 
         if (response.ok) {
-          const petData = await response.json();
-          setPetName(petData.name);
+          const petData = await response.json() 
+          setPetName(petData.name) 
           
         } else {
-          console.error(`Error fetching pet information. Status: ${response.status}`);
+          console.error(`Error fetching pet information. Status: ${response.status}`) 
         }
       } catch (error) {
-        console.error(`Error fetching pet information: ${error.message}`);
+        console.error(`Error fetching pet information: ${error.message}`) 
       }
-    };
+    } 
 
-    fetchPetInfo();
-  }, [logId]);
+    fetchPetInfo() 
+  }, [logId]) 
 
   const submitLog = async (e) => {
-    e.preventDefault();
+    e.preventDefault() 
 
     if (!logId) {
-      console.error('Invalid logId');
-      return;
+      console.error('Invalid logId') 
+      return 
     }
 
     const logData = {
       pet_id: logId,
       description: data.description,
       status: data.status,
-    };
+    } 
 
     try {
       const response = await fetch('https://vetbee-backend.glitch.me/v1/logs/', {
@@ -47,24 +47,24 @@ const PetLogs = () => {
         headers: {
           'Content-Type': 'application/json'
         }
-      });
+      }) 
 
-      const result = await response.json();
-      console.log('API Response:', result);
-      navigate(`/addlog/${logId}`);
+      const result = await response.json() 
+      console.log('API Response:', result) 
+      navigate(`/addlog/${logId}`) 
       
       if (result.id) {
         alert('Pet log added')
       }
     } catch (error) {
-      console.error('API Error:', error.message);
-      alert('An error occurred. Please try again.');
+      console.error('API Error:', error.message) 
+      alert('An error occurred. Please try again.') 
     }
-  };
+  } 
   
   const goBack = () => {
-    navigate(`/addlog/${logId}`);
-  };
+    navigate(`/addlog/${logId}`) 
+  } 
 
   return (
     <div className="petlogs">
@@ -82,7 +82,7 @@ const PetLogs = () => {
         </button>
       </form>
     </div>
-  );
-};
+  ) 
+} 
 
-export default PetLogs;
+export default PetLogs 

@@ -17,10 +17,12 @@ div .pets {
     justify-content: space-between;
     padding-top: 20px;
     gap: 10px;
+    padding-bottom: 65px;
 }
 
 div .pet {
     border: 1px solid rgba(128, 128, 128, 0.5);
+    max-width: 264px;
     border-radius: 5px;
     padding: 20px;
     display: flex;
@@ -32,10 +34,6 @@ div .pet {
         padding: 20px;
         font-weight: 400;
     }
-
-
-    
-
 }
 
 .buttons {
@@ -43,7 +41,6 @@ div .pet {
     padding: 10px;
     flex-direction: row;
     gap: 10px;
-
     padding-top: 25px;
 }
 

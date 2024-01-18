@@ -1,35 +1,35 @@
-import { NavLink, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Loading from "../components/Loading";
+import { NavLink, useParams } from "react-router-dom" 
+import { useEffect, useState } from "react" 
+import Loading from "../components/Loading" 
 
 const AddLog = () => {
-  const { logId } = useParams();
-  const [petLogs, setPetLogs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [petName, setPetName] = useState("");
+  const { logId } = useParams() 
+  const [petLogs, setPetLogs] = useState([]) 
+  const [loading, setLoading] = useState(true) 
+  const [error, setError] = useState(null) 
+  const [petName, setPetName] = useState("") 
 
   useEffect(() => {
     const fetchLogInfo = async () => {
       try {
-        const resp = await fetch(`https://vetbee-backend.glitch.me/v1/logs/${logId}`);
+        const resp = await fetch(`https://vetbee-backend.glitch.me/v1/logs/${logId}`) 
         if (resp.ok) {
-          const json = await resp.json();
-          console.log("API response:", json);
-          setPetLogs(json); 
-          setPetName(json[0].name);
+          const json = await resp.json() 
+          console.log("API response:", json) 
+          setPetLogs(json)  
+          setPetName(json[0].name) 
         } else {
-          setError(`Error fetching log. Status: ${resp.status}`);
+          setError(`Error fetching log. Status: ${resp.status}`) 
         }
       } catch (error) {
-        setError(`Error fetching log: ${error.message}`);
+        setError(`Error fetching log: ${error.message}`) 
       } finally {
-        setLoading(false);
+        setLoading(false) 
       }
-    };
+    } 
   
-    fetchLogInfo();
-  }, [logId]);
+    fetchLogInfo() 
+  }, [logId]) 
 
   return (
     <>
@@ -67,7 +67,7 @@ const AddLog = () => {
         </div>
       </div>
     </>
-  );
-};
+  ) 
+} 
 
-export default AddLog;
+export default AddLog 

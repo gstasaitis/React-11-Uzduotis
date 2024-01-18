@@ -7,6 +7,9 @@
 div .top {
     color: $orange;
     box-shadow: 0 0 2px gray;
+    background: white;
+    position: sticky;
+    top: 0;
 }
 
 div .navbar {

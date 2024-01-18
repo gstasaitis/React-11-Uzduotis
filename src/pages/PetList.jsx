@@ -25,7 +25,7 @@ const fetchPetDob = async () => {
     try {
         const resp = await fetch(`https://vetbee-backend.glitch.me/v1/pets/${id}`)
         if (resp.ok) {
-            const json = await resp.json();
+            const json = await resp.json() 
             if (json.dob) {
                 const dobDate = new Date(json.dob)
                 setDob(dobDate.toLocaleDateString("lt"))
@@ -37,7 +37,7 @@ const fetchPetDob = async () => {
             setDob("Error fetching pet dob")
         }
     } catch (error) {
-        console.error("Error fetching pet dob:", error);
+        console.error("Error fetching pet dob:", error) 
         setDob("Error fetching pet dob")
     }
 }
@@ -91,6 +91,7 @@ const handleDelete = async (petId) => {
         </div>
     ))}
 </div>
+
     </>
     )
 }

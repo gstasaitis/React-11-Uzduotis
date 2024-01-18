@@ -19,6 +19,9 @@ function App(logEntry) {
             <Route path='/petlogs/:logId' element={<PetLogs />} />
           </Routes>
         </div>
+        <div className="footer">
+    <footer>Copyright C VetBee 2023. All rights reserved.</footer>
+</div>
       </BrowserRouter>
     </>
   );

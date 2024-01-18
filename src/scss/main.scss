@@ -1,9 +1,10 @@
 div .main {
     width: 80%;
-    display: flex;
     margin: auto;
-    padding: 20px 0px;
-
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    max-height: 100vh;
+    min-height: 80vh;
 }

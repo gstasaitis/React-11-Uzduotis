@@ -1,25 +1,25 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react" 
+import { useNavigate } from "react-router-dom" 
 
 const AddPet = () => {
-  const navigate = useNavigate();
-  const [data, setData] = useState({});
+  const navigate = useNavigate() 
+  const [data, setData] = useState({}) 
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault() 
     const response = await fetch('https://vetbee-backend.glitch.me/v1/pets', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
       }
-    });
-    const result = await response.json();
-    console.log('API Response:', result);
+    }) 
+    const result = await response.json() 
+    console.log('API Response:', result) 
 
     if (result.id) {
-      alert('Pet added successfully. Navigating to home page.');
-      navigate('/');
+      alert('Pet added successfully. Navigating to home page.') 
+      navigate('/') 
     } 
   }
 
@@ -40,4 +40,4 @@ const AddPet = () => {
   )
 }
 
-export default AddPet;
+export default AddPet 
