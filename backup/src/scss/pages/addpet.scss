@@ -1,0 +1,21 @@
+div .form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    h2 {
+        font-weight: 400;
+        font-size: 2em;
+    }
+
+    h3 {
+        padding-top: 10px;
+        font-weight: 300;
+    }
+
+
+    button {
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+}

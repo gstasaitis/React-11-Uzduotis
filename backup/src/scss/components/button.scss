@@ -1,0 +1,28 @@
+.button {
+    background: $orange;
+    border: none;
+    padding: 10px 18px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+        background-color: $orangered;
+    }
+}
+
+.delete {
+    background: $white;
+    border: 1px solid $orange;
+    padding: 10px 18px;
+    border-radius: 5px;
+    color: $orange;
+    cursor: pointer;
+    transition: .3s;
+    &:hover {
+        background-color: $orangered;
+        color: $white;
+    }
+}

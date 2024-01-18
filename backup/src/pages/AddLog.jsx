@@ -1,8 +1,6 @@
 import { NavLink, useParams } from "react-router-dom" 
 import { useEffect, useState } from "react" 
 import Loading from "../components/Loading" 
-import { motion } from "framer-motion";
-
 
 const AddLog = () => {
   const { logId } = useParams() 
@@ -33,26 +31,6 @@ const AddLog = () => {
     fetchLogInfo() 
   }, [logId]) 
 
-  const container = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
-  };
-  
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
-    }
-  };
-
   return (
     <>
 <div className="addlog">
@@ -67,11 +45,7 @@ const AddLog = () => {
       </NavLink>
     </div>
   </div>
-  <motion.div 
-      className="cards"
-      variants={container}
-      initial="hidden"
-      animate="visible">
+  <div className="cards">
         {loading ? (
   <Loading />
   ) : error ? (
@@ -81,20 +55,16 @@ const AddLog = () => {
   </div>
 ) : (
   petLogs.map((logEntry) => (
-    <motion.div
-      className="card"
-      key={logEntry.id}
-      variants={item}
-      >
+    <div className="card" key={logEntry.id}>
       <div className="cardhead">
         <h3>{logEntry.status}</h3>
         <p>{logEntry.description}</p>
       </div>
       <div className="date">{new Date(logEntry.dob).toLocaleDateString("lt")}</div>
-    </motion.div>
+    </div>
             ))
           )}
-        </motion.div>
+        </div>
       </div>
     </>
   ) 
