@@ -63,6 +63,7 @@ const handleDelete = async (petId) => {
         console.error("Error deleting pet:", error)
     }
 }
+
     return (
     <>
     <div className="petlist">
